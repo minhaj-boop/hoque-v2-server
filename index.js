@@ -1,25 +1,25 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require("mongoose")
+const app = express()
 const cors = require("cors")
+const connection = require('./db')
+
+//database connection
+connection();
+
+//middlewares
+app.use(express.json())
+app.use(cors())
 
 const PORT = process.env.PORT || 8080
-
-const app = express()
-app.use(cors())
+app.listen(PORT, console.log("Server is listening at " + PORT))
 
 app.get("/", (req, res) => {
     res.json({ message: "server is running" })
 })
 
-mongoose.connect("mongodb+srv://hoqueconstruction:thisishoque@cluster0.ez1dzko.mongodb.net/hoque?retryWrites=true&w=majority&appName=Cluster0")
-    .then(() => {
-        console.log("cennected to db");
-        app.listen(PORT, console.log("Server is listening at " + PORT))
-    }).catch((err) => {
-        console.log(err);
-    })
-
-require("./imageDetails")
+require("./models/imageDetails")
 const Images = mongoose.model("ImageDetails")
 
 app.post("/upload-image", async (req, res) => {
