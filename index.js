@@ -6,6 +6,8 @@ const cors = require("cors")
 const connection = require('./db')
 const userRoutes = require('./routes/users')
 const authRoutes = require('./routes/auth')
+const imageRoutes = require('./routes/images')
+const fetchImagesRoutes = require('./routes/fetchImages')
 
 //database connection
 connection();
@@ -17,25 +19,14 @@ app.use(cors())
 //routes
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/upload-image', imageRoutes)
+app.use('/api/all-images', fetchImagesRoutes)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, console.log("Server is listening at " + PORT))
 
 app.get("/", (req, res) => {
     res.json({ message: "server is running" })
-})
-
-require("./models/imageDetails")
-const Images = mongoose.model("ImageDetails")
-
-app.post("/upload-image", async (req, res) => {
-    const { base64 } = req.body;
-    try {
-        Images.create({ image: base64 })
-        res.send({ Status: "ok" })
-    } catch (error) {
-        res.send({ Status: "error", data: "not connected" })
-    }
 })
 
 
