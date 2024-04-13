@@ -7,7 +7,7 @@ module.exports = () => {
     };
     try {
         mongoose.connect(process.env.DB)
-        console.log("cennected to db");
+        // console.log("cennected to db");
     } catch (error) {
         console.log(error);
     }
