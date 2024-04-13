@@ -8,6 +8,7 @@ const userRoutes = require('./routes/users')
 const authRoutes = require('./routes/auth')
 const imageRoutes = require('./routes/images')
 const fetchImagesRoutes = require('./routes/fetchImages')
+const messageRoutes = require('./routes/messages')
 
 //database connection
 connection();
@@ -21,12 +22,13 @@ app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/upload-image', imageRoutes)
 app.use('/api/all-images', fetchImagesRoutes)
+app.use('/api/message', messageRoutes)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, console.log("Server is listening at " + PORT))
 
-app.get("/", (req, res) => {
-    res.json({ message: "server is running" })
-})
+// app.get("/", (req, res) => {
+//     res.json({ message: "server is running" })
+// })
 
 
