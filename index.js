@@ -9,6 +9,7 @@ const authRoutes = require('./routes/auth')
 const imageRoutes = require('./routes/images')
 const fetchImagesRoutes = require('./routes/fetchImages')
 const messageRoutes = require('./routes/messages')
+const fetchMessagesRoutes = require('./routes/fetechAllMessages')
 
 //database connection
 connection();
@@ -23,6 +24,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/upload-image', imageRoutes)
 app.use('/api/all-images', fetchImagesRoutes)
 app.use('/api/message', messageRoutes)
+app.use('/api/all-messages', fetchMessagesRoutes)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, console.log("Server is listening at " + PORT))
