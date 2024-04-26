@@ -3,7 +3,7 @@ const { Image } = require('../models/image')
 
 router.get("/", async (req, res) => {
     try {
-        const image = Image.findById(req.params.id)
+        const image = Image.findById({ _id: req.params.id })
         if (!image) {
             return res.status(404).send()
         }
