@@ -10,6 +10,7 @@ const imageRoutes = require('./routes/images')
 const fetchImagesRoutes = require('./routes/fetchImages')
 const messageRoutes = require('./routes/messages')
 const fetchMessagesRoutes = require('./routes/fetechAllMessages')
+const fetchProduct = require('./routes/fetchProduct')
 
 //database connection
 connection();
@@ -25,6 +26,7 @@ app.use('/api/upload-image', imageRoutes)
 app.use('/api/all-images', fetchImagesRoutes)
 app.use('/api/message', messageRoutes)
 app.use('/api/all-messages', fetchMessagesRoutes)
+app.use('/api/product/:id', fetchProduct)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, console.log("Server is listening at " + PORT))
