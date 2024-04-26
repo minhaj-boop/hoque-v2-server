@@ -3,13 +3,14 @@ const { Image } = require('../models/image')
 
 router.get("/", async (req, res) => {
     try {
-        const image = Image.findById({ _id: req.params.id })
-        if (!image) {
+        const product = await Image.findOne({ _id: new ObjectId(req.params.id) });
+        if (!product) {
             return res.status(404).send()
         }
-        res.send(image)
+        res.send(product)
     } catch (error) {
-        res.status(500).send(error)
+        console.error('Error fetching product:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 })
 
