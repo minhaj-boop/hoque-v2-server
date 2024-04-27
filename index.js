@@ -26,7 +26,7 @@ app.use('/api/upload-image', imageRoutes)
 app.use('/api/all-images', fetchImagesRoutes)
 app.use('/api/message', messageRoutes)
 app.use('/api/all-messages', fetchMessagesRoutes)
-app.use('/api/product/:_id', fetchProduct)
+app.use('/api/single-product/', fetchProduct)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, console.log("Server is listening at " + PORT))
