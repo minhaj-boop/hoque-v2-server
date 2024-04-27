@@ -4,7 +4,7 @@ const { ObjectId } = require('mongodb');
 
 router.get("/", async (req, res) => {
     try {
-        const product = await Image.findOne({ _id: ObjectId(req.params._id) });
+        const product = await Image.findOne({ "_id": ObjectId(req.params.id) });
         if (!product) {
 
             return res.status(404).send()
