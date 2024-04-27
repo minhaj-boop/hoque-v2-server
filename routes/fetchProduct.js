@@ -9,7 +9,7 @@ router.get("/:id", async (req, res) => {
         res.send({ status: "ok", data: product })
     } catch (error) {
         console.error('Error fetching Images:', error);
-        res.status(400).json(req.params.id);
+        res.status(400).json(req.params.id + "......");
     }
 })
 
