@@ -6,8 +6,10 @@ router.get("/", async (req, res) => {
     try {
         const product = await Image.findOne({ _id: new ObjectId(req.params.id) });
         if (!product) {
+            console.log("No Product");
             return res.status(404).send()
         }
+        console.log("product");
         res.send(product)
     } catch (error) {
         console.error('Error fetching product:', error);
