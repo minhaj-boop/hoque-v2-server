@@ -4,12 +4,11 @@ const { ObjectId } = require('mongodb');
 
 router.get("/", async (req, res) => {
     try {
-        const product = await Image.findOne({ _id: new ObjectId(req.params.id) });
+        const product = await Image.findOne({ _id: req.params.id });
         if (!product) {
-            console.log("No Product");
+            console.log("Nothing found")
             return res.status(404).send()
         }
-        console.log("product");
         res.send(product)
     } catch (error) {
         console.error('Error fetching product:', error);
