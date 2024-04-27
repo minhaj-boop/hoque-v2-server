@@ -22,8 +22,8 @@ router.get("/", async (req, res) => {
     // const customerID = req.params.id
     // console.log(customerID);
     try {
-        const allImages = await Image.find({})
-        res.send({ status: "ok", data: allImages })
+        const product = await Image.findOne({ "_id": ObjectId(req.params.id) })
+        res.send({ status: "ok", data: product })
     } catch (error) {
         console.error('Error fetching Images:', error);
         res.status(400).json({ error: 'Internal server error' });
