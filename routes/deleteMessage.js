@@ -1,8 +1,9 @@
 const router = require("express").Router()
 const { Message } = require('../models/message')
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
     const { message } = req.body
+    console.log(message)
     try {
         Message.deleteOne(
             { _id: message }, function (err, res) {
