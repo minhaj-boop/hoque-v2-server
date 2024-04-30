@@ -3,7 +3,7 @@ const { Message } = require('../models/message')
 
 router.post("/", async (req, res) => {
     const { message } = req.body
-    console.log(message)
+    // console.log(message)
     try {
         Message.deleteOne(
             { _id: message }, function (err, res) {
