@@ -12,6 +12,7 @@ const messageRoutes = require('./routes/messages')
 const fetchMessagesRoutes = require('./routes/fetechAllMessages')
 const fetchProduct = require('./routes/fetchProduct')
 const deleteMessage = require('./routes/deleteMessage')
+const deleteImage = require('./routes/deleteImage')
 
 //database connection
 connection();
@@ -29,6 +30,7 @@ app.use('/api/message', messageRoutes)
 app.use('/api/all-messages', fetchMessagesRoutes)
 app.use('/api/single-product', fetchProduct)
 app.use('/api/delete-message', deleteMessage)
+app.use('/api/delete-image', deleteImage)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, console.log("Server is listening at " + PORT))
