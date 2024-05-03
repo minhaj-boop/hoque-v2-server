@@ -3,12 +3,12 @@
 const router = require("express").Router();
 const { Image } = require('../models/image');
 
-router.get("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     const imageId = req.params.id;
     // console.log(imageId); 
 
     try {
-        const updatedImage = await Image.findOneAndUpdate({ _id: imageId }, req.body);
+        const updatedImage = await Image.findOneAndUpdate({ _id: imageId }, req.body, { new: true });
         if (!updatedImage) {
             return res.status(404).json({ status: "error", message: "Image not found" });
         }
